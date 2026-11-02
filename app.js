@@ -16,7 +16,7 @@
   // ---------- Load content ----------
   async function loadContent() {
     try {
-      const res = await fetch('./data/content.html');
+      const res = await fetch('./content.html');
       const html = await res.text();
       const parser = new DOMParser();
       contentDoc = parser.parseFromString(html, 'text/html');
@@ -68,7 +68,6 @@
 
   function buildSearchIndex() {
     searchIndex = [];
-    // Index headings + nearby paragraph text
     const body = contentDoc.body;
     const walker = document.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
     let node;
@@ -96,7 +95,6 @@
     const target = contentDoc.getElementById(id);
     if (!target) return;
 
-    // Clone the section content: show from this heading until next same/higher level
     const level = parseInt(target.tagName.substring(1), 10);
     const frag = document.createDocumentFragment();
     const clone = target.cloneNode(true);
@@ -116,7 +114,6 @@
     contentEl.appendChild(frag);
     contentEl.scrollTop = 0;
 
-    // Highlight active TOC item
     tocEl.querySelectorAll('a').forEach((a) => a.classList.toggle('active', a.dataset.id === id));
 
     backBtn.style.display = 'flex';

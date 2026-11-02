@@ -1,13 +1,13 @@
-const CACHE = 'kittitas-als-v1';
+const CACHE = 'kittitas-als-v2';
 const ASSETS = [
   './',
   './index.html',
-  './css/styles.css',
-  './js/app.js',
+  './styles.css',
+  './app.js',
   './manifest.json',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './data/content.html'
+  './icon-192.png',
+  './icon-512.png',
+  './content.html'
 ];
 
 self.addEventListener('install', (e) => {
@@ -28,7 +28,6 @@ self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((cached) => {
       return cached || fetch(e.request).then((res) => {
-        // Optionally cache new requests
         return res;
       }).catch(() => cached);
     })
