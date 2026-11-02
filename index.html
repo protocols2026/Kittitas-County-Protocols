@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Kittitas County Advanced Life Support Protocols - Offline capable mobile reference" />
+  <title>Kittitas ALS Protocols</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="top-row">
+        <button id="menu-btn" aria-label="Menu">☰</button>
+        <button id="back-btn" aria-label="Home">←</button>
+        <h1>Kittitas ALS Protocols</h1>
+      </div>
+      <input type="search" id="search-input" placeholder="Search protocols…" autocomplete="off" enterkeyhint="search" />
+    </header>
+
+    <div class="main">
+      <div id="sidebar-overlay"></div>
+      <nav id="sidebar">
+        <div class="sidebar-header">Table of Contents</div>
+        <div id="toc"></div>
+      </nav>
+
+      <main id="content">
+        <div class="loading">Loading protocols…</div>
+      </main>
+
+      <div id="search-results"></div>
+    </div>
+  </div>
+
+  <div id="offline-badge">Offline mode</div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>
